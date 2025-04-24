@@ -2,6 +2,7 @@
   "name": "AiPlayground",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://KvRae.github.io/AiPlayground",
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
     "@testing-library/dom": "^10.4.0",

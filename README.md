@@ -83,6 +83,29 @@ npm run build
 
 This creates an optimized production build in the `build` folder that you can deploy to a web server.
 
+## Deployment to GitHub Pages
+
+This project is configured to automatically deploy to GitHub Pages using GitHub Actions. When you push changes to the `main` branch, the following happens:
+
+1. GitHub Actions workflow is triggered
+2. The code is checked out
+3. Node.js environment is set up
+4. Dependencies are installed
+5. The application is built
+6. The build is deployed to the `gh-pages` branch
+7. GitHub Pages serves the content from the `gh-pages` branch
+
+You can view the deployed application at: [https://KvRae.github.io/AiPlayground](https://KvRae.github.io/AiPlayground)
+
+### Troubleshooting Deployment
+
+If you encounter issues with the deployment:
+
+1. Check the Actions tab in your GitHub repository to see if the workflow completed successfully
+2. Ensure your repository has GitHub Pages enabled and is set to deploy from the `gh-pages` branch
+3. Verify that the `homepage` field in `package.json` matches your GitHub Pages URL
+4. Check if your repository has the necessary permissions for GitHub Actions to deploy to GitHub Pages
+
 ## Available Scripts
 
 - `npm start` - Runs the app in development mode
