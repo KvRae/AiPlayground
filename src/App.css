@@ -492,8 +492,10 @@
   color: white;
   padding: 2rem;
   text-align: center;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-top: 2rem;
+  border-top: 3px solid rgba(255, 255, 255, 0.1);
+  margin-top: 3rem;
+  width: 100%;
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
 }
 
 .landing-footer p {
@@ -513,6 +515,12 @@
   text-decoration: underline;
 }
 
+.dark .landing-footer {
+  background-color: #222;
+  border-top: 3px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2);
+}
+
 /* API Key Container */
 .api-key-container {
   background-color: white;
@@ -522,39 +530,88 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  text-align: center;
   padding: 0;
   transition: all 0.3s ease, background-color 0.3s ease;
+  position: relative;
 }
 
 .dark .api-key-container {
   background-color: #1e1e1e;
 }
 
-.api-key-header {
+.api-key-title {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+  width: 100%;
+  padding-top: 2rem;
+}
+
+.back-to-home-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: #1a73e8;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  margin-top: 1rem;
+  transition: all 0.2s ease;
+}
+
+.back-to-home-button:hover {
+  background-color: rgba(26, 115, 232, 0.1);
+  color: #0d47a1;
+}
+
+.dark .back-to-home-button {
+  color: #64b5f6;
+}
+
+.dark .back-to-home-button:hover {
+  background-color: rgba(100, 181, 246, 0.1);
+  color: #90caf9;
 }
 
 /* Center the API key form content */
-
-.api-key-form, .api-key-subtitle, .api-info, .api-key-header {
-  max-width: 500px;
+.api-key-subtitle {
+  max-width: 600px;
   width: 100%;
+  margin-bottom: 0.5rem;
 }
 
 /* Add a content wrapper for better spacing */
 .api-key-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
   width: 100%;
-  max-width: 600px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem 1rem;
+  padding: 0 2rem 2rem;
   flex: 1;
+  box-sizing: border-box;
+}
+
+/* Main content with side-by-side layout */
+.api-key-main-content {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: stretch;
+  gap: 2rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .api-key-main-content {
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
 .api-logo {
@@ -568,14 +625,14 @@
   100% { transform: translateY(0px); }
 }
 
-.api-key-container h1 {
+.api-key-title h1 {
   background: linear-gradient(to right, #1a73e8, #4285f4, #0d47a1);
   background-size: 200% auto;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
   margin-bottom: 0.5rem;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   animation: gradientText 6s ease infinite;
 }
 
@@ -594,7 +651,19 @@
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
-  margin: 0 0 2rem;
+  margin: 0;
+  padding: 2rem;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dark .api-key-form {
+  background-color: #2a2a2a;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .input-field-container {
@@ -725,20 +794,26 @@
 }
 
 .api-info {
+  display: flex;
+  flex-direction: column;
   background-color: #f5f9ff;
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 2rem;
   font-size: 0.9rem;
   color: #555;
   text-align: left;
   border: 1px solid #e3f2fd;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
 .dark .api-info {
   background-color: #2a2a2a;
   color: #b0b0b0;
   border-color: #444;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .api-info-header {
@@ -999,9 +1074,20 @@
   background-color: #e3f2fd;
 }
 
+.dark .user-message {
+  background-color: #1a73e8;
+  color: #e0e0e0;
+}
+
 .ai-message {
   align-self: flex-start;
   background-color: white;
+  transition: background-color 0.3s ease;
+}
+
+.dark .ai-message {
+  background-color: #3d3d3d;
+  color: #e0e0e0;
 }
 
 .error-message {
@@ -1023,6 +1109,12 @@
 .ai-message .message-header {
   background-color: #f5f5f5;
   color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark .ai-message .message-header {
+  background-color: #4d4d4d;
+  color: #e0e0e0;
 }
 
 .error-message .message-header {
@@ -1092,6 +1184,12 @@
   padding: 1rem;
   border-top: 1px solid #eee;
   background-color: white;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.dark .input-container {
+  background-color: #2d2d2d;
+  border-top: 1px solid #444;
 }
 
 .image-preview-container {
@@ -1140,12 +1238,21 @@
   background-color: #f5f5f5;
   border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, color 0.2s;
   color: #555;
+}
+
+.dark .image-upload-label {
+  background-color: #3d3d3d;
+  color: #e0e0e0;
 }
 
 .image-upload-label:hover {
   background-color: #e0e0e0;
+}
+
+.dark .image-upload-label:hover {
+  background-color: #4d4d4d;
 }
 
 .input-container input[type="text"] {
@@ -1154,6 +1261,15 @@
   border: 1px solid #ddd;
   border-radius: 24px;
   font-size: 1rem;
+  background-color: white;
+  color: #333;
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.dark .input-container input[type="text"] {
+  background-color: #3d3d3d;
+  border-color: #555;
+  color: #e0e0e0;
 }
 
 .input-container button[type="submit"] {
@@ -1271,8 +1387,17 @@
     padding: 1.5rem 1rem;
   }
 
-  .api-key-header {
+  .api-key-title {
     margin-bottom: 1rem;
+  }
+
+  .api-key-main-content {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .api-key-form, .api-info {
+    max-width: 100%;
   }
 
   .api-logo svg {
@@ -1280,7 +1405,7 @@
     height: 28px;
   }
 
-  .api-key-container h1 {
+  .api-key-title h1 {
     font-size: 1.8rem;
   }
 
@@ -1481,8 +1606,18 @@
     padding: 1rem;
   }
 
-  .api-key-header {
+  .api-key-title {
     margin-bottom: 0.75rem;
+  }
+
+  .api-key-main-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .api-key-form, .api-info {
+    max-width: 100%;
+    padding: 1rem;
   }
 
   .api-logo {
@@ -1494,7 +1629,7 @@
     height: 24px;
   }
 
-  .api-key-container h1 {
+  .api-key-title h1 {
     font-size: 1.5rem;
   }
 

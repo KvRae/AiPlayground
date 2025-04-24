@@ -307,16 +307,8 @@ function App() {
         </div>
       ) : !apiKeySet ? (
         <div className="api-key-container">
-          <TopNav 
-            showBackButton={true} 
-            currentView="apiKey" 
-            onBack={handleBackNavigation}
-            onLogoClick={() => setShowLandingPage(true)}
-            theme={theme}
-            toggleTheme={toggleTheme} />
-
           <div className="api-key-content">
-            <div className="api-key-header">
+            <div className="api-key-title">
               <div className="api-logo" onClick={() => setShowLandingPage(true)} style={{ cursor: 'pointer' }}>
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M12 2L2 7L12 12L22 7L12 2Z" stroke={theme === 'dark' ? "#64b5f6" : "#1a73e8"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -325,73 +317,82 @@ function App() {
                 </svg>
               </div>
               <h1>Gemini AI Chat</h1>
-            </div>
-            <p className="api-key-subtitle">Enter your API key to start your AI conversation</p>
-
-            <form onSubmit={handleApiKeySubmit} className="api-key-form">
-              <div className="input-field-container">
-                <div className="input-icon">
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M19 11H5V21H19V11Z" stroke={theme === 'dark' ? "#64b5f6" : "#1a73e8"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <path d="M17 9V8C17 5.23858 14.7614 3 12 3C9.23858 3 7 5.23858 7 8V9" stroke={theme === 'dark' ? "#64b5f6" : "#1a73e8"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <input
-                  type="password"
-                  value={apiKey}
-                  onChange={(e) => setApiKey(e.target.value)}
-                  placeholder="Paste your Gemini API key here"
-                  required
-                  className="api-key-input"
-                />
-              </div>
-
-              <div className="remember-key-option">
-                <label className="remember-key-label">
-                  <input
-                    type="checkbox"
-                    checked={rememberApiKey}
-                    onChange={(e) => setRememberApiKey(e.target.checked)}
-                    className="remember-checkbox"
-                  />
-                  <span className="checkbox-text">Remember my API key</span>
-                </label>
-                <small className="remember-key-note">
-                  (Only check this on your personal device)
-                </small>
-              </div>
-
-              <button type="submit" className="start-button">
-                <span>Start Chatting</span>
+              <p className="api-key-subtitle">Enter your API key to start your AI conversation</p>
+              <button onClick={() => setShowLandingPage(true)} className="back-to-home-button">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M5 12H19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M19 12H5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <path d="M12 19L5 12L12 5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
                 </svg>
+                <span>Back to Home</span>
               </button>
-            </form>
+            </div>
 
-            <div className="api-info">
-              <div className="api-info-header">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="12" cy="12" r="10" stroke={theme === 'dark' ? "#64b5f6" : "#1a73e8"} strokeWidth="2"/>
-                  <path d="M12 16V12" stroke={theme === 'dark' ? "#64b5f6" : "#1a73e8"} strokeWidth="2" strokeLinecap="round"/>
-                  <circle cx="12" cy="8" r="1" fill={theme === 'dark' ? "#64b5f6" : "#1a73e8"}/>
-                </svg>
-                <p><strong>How to get your API key:</strong></p>
-              </div>
-              <ol className="api-steps">
-                <li>Visit <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Google AI Studio</a></li>
-                <li>Sign in with your Google account</li>
-                <li>Create a new API key</li>
-                <li>Copy and paste it here</li>
-              </ol>
-              <div className="api-note">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke={theme === 'dark' ? "#aaa" : "#666"} strokeWidth="2"/>
-                  <path d="M12 8V12" stroke={theme === 'dark' ? "#aaa" : "#666"} strokeWidth="2" strokeLinecap="round"/>
-                  <circle cx="12" cy="16" r="1" fill={theme === 'dark' ? "#aaa" : "#666"}/>
-                </svg>
-                <small>Your API key is only stored in your browser's local storage and is never sent to our servers.</small>
+            <div className="api-key-main-content">
+              <form onSubmit={handleApiKeySubmit} className="api-key-form">
+                <div className="input-field-container">
+                  <div className="input-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M19 11H5V21H19V11Z" stroke={theme === 'dark' ? "#64b5f6" : "#1a73e8"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                      <path d="M17 9V8C17 5.23858 14.7614 3 12 3C9.23858 3 7 5.23858 7 8V9" stroke={theme === 'dark' ? "#64b5f6" : "#1a73e8"} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                  <input
+                    type="password"
+                    value={apiKey}
+                    onChange={(e) => setApiKey(e.target.value)}
+                    placeholder="Paste your Gemini API key here"
+                    required
+                    className="api-key-input"
+                  />
+                </div>
+
+                <div className="remember-key-option">
+                  <label className="remember-key-label">
+                    <input
+                      type="checkbox"
+                      checked={rememberApiKey}
+                      onChange={(e) => setRememberApiKey(e.target.checked)}
+                      className="remember-checkbox"
+                    />
+                    <span className="checkbox-text">Remember my API key</span>
+                  </label>
+                  <small className="remember-key-note">
+                    (Only check this on your personal device)
+                  </small>
+                </div>
+
+                <button type="submit" className="start-button">
+                  <span>Start Chatting</span>
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M5 12H19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <path d="M12 5L19 12L12 19" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </form>
+
+              <div className="api-info">
+                <div className="api-info-header">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="12" cy="12" r="10" stroke={theme === 'dark' ? "#64b5f6" : "#1a73e8"} strokeWidth="2"/>
+                    <path d="M12 16V12" stroke={theme === 'dark' ? "#64b5f6" : "#1a73e8"} strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="12" cy="8" r="1" fill={theme === 'dark' ? "#64b5f6" : "#1a73e8"}/>
+                  </svg>
+                  <p><strong>How to get your API key:</strong></p>
+                </div>
+                <ol className="api-steps">
+                  <li>Visit <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer">Google AI Studio</a></li>
+                  <li>Sign in with your Google account</li>
+                  <li>Create a new API key</li>
+                  <li>Copy and paste it here</li>
+                </ol>
+                <div className="api-note">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke={theme === 'dark' ? "#aaa" : "#666"} strokeWidth="2"/>
+                    <path d="M12 8V12" stroke={theme === 'dark' ? "#aaa" : "#666"} strokeWidth="2" strokeLinecap="round"/>
+                    <circle cx="12" cy="16" r="1" fill={theme === 'dark' ? "#aaa" : "#666"}/>
+                  </svg>
+                  <small>Your API key is only stored in your browser's local storage and is never sent to our servers.</small>
+                </div>
               </div>
             </div>
           </div>
@@ -426,13 +427,13 @@ function App() {
                   <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
                   <option value="gemini-1.5-flash-8b">Gemini 1.5 Flash-8B</option>
                 </select>
-                <div className="model-info" style={{ fontSize: '0.8rem', color: 'white', marginTop: '2px', fontWeight: '500' }}>
-                  <a href="https://aistudio.google.com/app/plan_information" target="_blank" rel="noopener noreferrer" style={{ color: 'white' }}>
+                <div className="model-info" style={{ fontSize: '0.8rem', color: theme === 'dark' ? '#e0e0e0' : 'white', marginTop: '2px', fontWeight: '500' }}>
+                  <a href="https://aistudio.google.com/app/plan_information" target="_blank" rel="noopener noreferrer" style={{ color: theme === 'dark' ? '#64b5f6' : 'white' }}>
                     View billing information
                   </a>
                 </div>
                 {selectedImage && (
-                  <div className="model-info" style={{ fontSize: '0.8rem', color: '#666', marginTop: '2px' }}>
+                  <div className="model-info" style={{ fontSize: '0.8rem', color: theme === 'dark' ? '#aaaaaa' : '#666', marginTop: '2px' }}>
                     Image detected: Will use gemini-1.5-flash for vision capabilities
                   </div>
                 )}
