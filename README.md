@@ -1,4 +1,4 @@
-# G AI Playground
+# AI Playground
 
 A React-based chat application that allows you to interact with Google's Gemini AI models. This application supports both text conversations and image analysis using Gemini's multimodal capabilities.
 
