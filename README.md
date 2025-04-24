@@ -52,11 +52,14 @@ To use this application, you'll need a Gemini API key:
 ## Usage
 
 1. When you first open the application, you'll be prompted to enter your Gemini API key.
+   - You can choose to remember your API key for future sessions by checking the "Remember my API key" option
+   - This is convenient for personal devices but should be used with caution on shared computers
 2. After entering your API key, you can:
    - Type messages to chat with the AI
    - Select different Gemini models from the dropdown menu
    - Upload images for analysis by clicking the image icon
    - View the AI's responses in real-time
+   - Change your API key at any time using the "Change API Key" button (this will also clear any saved API key)
 
 ## Supported Models
 
